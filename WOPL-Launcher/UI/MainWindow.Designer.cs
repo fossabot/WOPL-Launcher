@@ -26,12 +26,15 @@
 			this.LoginBoxBorder = new WOPL_Launcher.Controls.MyPanel();
 			this.LoginBoxTextBox = new System.Windows.Forms.TextBox();
 			this.PasswordBoxBorder = new WOPL_Launcher.Controls.MyPanel();
-			this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+			this.PasswordBoxTextBox = new System.Windows.Forms.MaskedTextBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.RememberMeLabel = new System.Windows.Forms.Label();
+			this.RegisterBoxBorder = new System.Windows.Forms.PictureBox();
+			this.RegisterBoxLabel = new System.Windows.Forms.Label();
 			this.LoginBoxBorder.SuspendLayout();
 			this.PasswordBoxBorder.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.RegisterBoxBorder)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// LoginBoxBorder
@@ -57,22 +60,22 @@
 			// PasswordBoxBorder
 			// 
 			this.PasswordBoxBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
-			this.PasswordBoxBorder.Controls.Add(this.maskedTextBox1);
+			this.PasswordBoxBorder.Controls.Add(this.PasswordBoxTextBox);
 			this.PasswordBoxBorder.Location = new System.Drawing.Point(23, 216);
 			this.PasswordBoxBorder.Name = "PasswordBoxBorder";
 			this.PasswordBoxBorder.Size = new System.Drawing.Size(253, 37);
 			this.PasswordBoxBorder.TabIndex = 1;
 			// 
-			// maskedTextBox1
+			// PasswordBoxTextBox
 			// 
-			this.maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
-			this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.maskedTextBox1.ForeColor = System.Drawing.Color.White;
-			this.maskedTextBox1.Location = new System.Drawing.Point(11, 12);
-			this.maskedTextBox1.Name = "maskedTextBox1";
-			this.maskedTextBox1.Size = new System.Drawing.Size(232, 13);
-			this.maskedTextBox1.TabIndex = 0;
-			this.maskedTextBox1.UseSystemPasswordChar = true;
+			this.PasswordBoxTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+			this.PasswordBoxTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.PasswordBoxTextBox.ForeColor = System.Drawing.Color.White;
+			this.PasswordBoxTextBox.Location = new System.Drawing.Point(11, 12);
+			this.PasswordBoxTextBox.Name = "PasswordBoxTextBox";
+			this.PasswordBoxTextBox.Size = new System.Drawing.Size(232, 13);
+			this.PasswordBoxTextBox.TabIndex = 0;
+			this.PasswordBoxTextBox.UseSystemPasswordChar = true;
 			// 
 			// pictureBox1
 			// 
@@ -97,12 +100,36 @@
 			this.RememberMeLabel.TabIndex = 3;
 			this.RememberMeLabel.Text = "REMEMBER MY EMAIL ADDRESS & PASSWORD";
 			// 
+			// RegisterBoxBorder
+			// 
+			this.RegisterBoxBorder.BackColor = System.Drawing.Color.Transparent;
+			this.RegisterBoxBorder.BackgroundImage = global::WOPL_Launcher.Properties.Resources.button_register_border;
+			this.RegisterBoxBorder.Location = new System.Drawing.Point(23, 428);
+			this.RegisterBoxBorder.Name = "RegisterBoxBorder";
+			this.RegisterBoxBorder.Size = new System.Drawing.Size(253, 34);
+			this.RegisterBoxBorder.TabIndex = 4;
+			this.RegisterBoxBorder.TabStop = false;
+			// 
+			// RegisterBoxLabel
+			// 
+			this.RegisterBoxLabel.BackColor = System.Drawing.Color.Transparent;
+			this.RegisterBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.RegisterBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
+			this.RegisterBoxLabel.Location = new System.Drawing.Point(23, 428);
+			this.RegisterBoxLabel.Name = "RegisterBoxLabel";
+			this.RegisterBoxLabel.Size = new System.Drawing.Size(253, 34);
+			this.RegisterBoxLabel.TabIndex = 5;
+			this.RegisterBoxLabel.Text = "click here to create account now";
+			this.RegisterBoxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::WOPL_Launcher.Properties.Resources.background;
 			this.ClientSize = new System.Drawing.Size(300, 539);
+			this.Controls.Add(this.RegisterBoxLabel);
+			this.Controls.Add(this.RegisterBoxBorder);
 			this.Controls.Add(this.RememberMeLabel);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.PasswordBoxBorder);
@@ -112,12 +139,13 @@
 			this.Name = "MainWindow";
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "WorldOnlinePL Launcher";
+			this.Text = "WorldOnlinePL";
 			this.LoginBoxBorder.ResumeLayout(false);
 			this.LoginBoxBorder.PerformLayout();
 			this.PasswordBoxBorder.ResumeLayout(false);
 			this.PasswordBoxBorder.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.RegisterBoxBorder)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -128,8 +156,10 @@
 		private Controls.MyPanel LoginBoxBorder;
 		private Controls.MyPanel PasswordBoxBorder;
 		private System.Windows.Forms.TextBox LoginBoxTextBox;
-		private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+		private System.Windows.Forms.MaskedTextBox PasswordBoxTextBox;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label RememberMeLabel;
+		private System.Windows.Forms.PictureBox RegisterBoxBorder;
+		private System.Windows.Forms.Label RegisterBoxLabel;
 	}
 }

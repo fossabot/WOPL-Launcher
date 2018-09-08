@@ -73,6 +73,16 @@ namespace WOPL_Launcher.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_register_border {
+            get {
+                object obj = ResourceManager.GetObject("button_register_border", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap final {
             get {
                 object obj = ResourceManager.GetObject("final", resourceCulture);

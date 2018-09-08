@@ -127,4 +127,7 @@
   <data name="final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="button_register_border" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_register_border.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
