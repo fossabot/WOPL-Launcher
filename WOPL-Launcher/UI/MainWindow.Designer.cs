@@ -23,39 +23,92 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.LoginBoxBorder = new WOPL_Launcher.Controls.MyPanel();
-			this.LoginBoxTextBox = new System.Windows.Forms.TextBox();
-			this.PasswordBoxBorder = new WOPL_Launcher.Controls.MyPanel();
-			this.PasswordBoxTextBox = new System.Windows.Forms.MaskedTextBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.RememberMeLabel = new System.Windows.Forms.Label();
 			this.RegisterBoxBorder = new System.Windows.Forms.PictureBox();
 			this.RegisterBoxLabel = new System.Windows.Forms.Label();
-			this.LoginBoxBorder.SuspendLayout();
-			this.PasswordBoxBorder.SuspendLayout();
+			this.InfoBox = new System.Windows.Forms.Label();
+			this.DownloaderProgressBar = new ProgressBarEx.ProgressBarEx();
+			this.PasswordBoxBorder = new WOPL_Launcher.Controls.MyPanel();
+			this.PasswordBoxTextBox = new System.Windows.Forms.MaskedTextBox();
+			this.LoginBoxBorder = new WOPL_Launcher.Controls.MyPanel();
+			this.LoginBoxTextBox = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.RegisterBoxBorder)).BeginInit();
+			this.PasswordBoxBorder.SuspendLayout();
+			this.LoginBoxBorder.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// LoginBoxBorder
+			// pictureBox1
 			// 
-			this.LoginBoxBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
-			this.LoginBoxBorder.Controls.Add(this.LoginBoxTextBox);
-			this.LoginBoxBorder.Location = new System.Drawing.Point(23, 166);
-			this.LoginBoxBorder.Name = "LoginBoxBorder";
-			this.LoginBoxBorder.Size = new System.Drawing.Size(253, 37);
-			this.LoginBoxBorder.TabIndex = 0;
+			this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+			this.pictureBox1.BackgroundImage = global::WOPL_Launcher.Properties.Resources.logo;
+			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pictureBox1.Location = new System.Drawing.Point(23, 29);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(253, 112);
+			this.pictureBox1.TabIndex = 2;
+			this.pictureBox1.TabStop = false;
 			// 
-			// LoginBoxTextBox
+			// RememberMeLabel
 			// 
-			this.LoginBoxTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
-			this.LoginBoxTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.LoginBoxTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.LoginBoxTextBox.ForeColor = System.Drawing.Color.White;
-			this.LoginBoxTextBox.Location = new System.Drawing.Point(11, 12);
-			this.LoginBoxTextBox.Name = "LoginBoxTextBox";
-			this.LoginBoxTextBox.Size = new System.Drawing.Size(232, 13);
-			this.LoginBoxTextBox.TabIndex = 0;
+			this.RememberMeLabel.AutoSize = true;
+			this.RememberMeLabel.BackColor = System.Drawing.Color.Transparent;
+			this.RememberMeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(238)));
+			this.RememberMeLabel.ForeColor = System.Drawing.Color.Transparent;
+			this.RememberMeLabel.Location = new System.Drawing.Point(50, 267);
+			this.RememberMeLabel.Name = "RememberMeLabel";
+			this.RememberMeLabel.Size = new System.Drawing.Size(179, 15);
+			this.RememberMeLabel.TabIndex = 3;
+			this.RememberMeLabel.Text = "ZAPAMIETAJ MOJE HASŁO";
+			// 
+			// RegisterBoxBorder
+			// 
+			this.RegisterBoxBorder.BackColor = System.Drawing.Color.Transparent;
+			this.RegisterBoxBorder.BackgroundImage = global::WOPL_Launcher.Properties.Resources.button_register_border;
+			this.RegisterBoxBorder.Location = new System.Drawing.Point(23, 428);
+			this.RegisterBoxBorder.Name = "RegisterBoxBorder";
+			this.RegisterBoxBorder.Size = new System.Drawing.Size(253, 34);
+			this.RegisterBoxBorder.TabIndex = 4;
+			this.RegisterBoxBorder.TabStop = false;
+			// 
+			// RegisterBoxLabel
+			// 
+			this.RegisterBoxLabel.BackColor = System.Drawing.Color.Transparent;
+			this.RegisterBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.RegisterBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
+			this.RegisterBoxLabel.Location = new System.Drawing.Point(23, 428);
+			this.RegisterBoxLabel.Name = "RegisterBoxLabel";
+			this.RegisterBoxLabel.Size = new System.Drawing.Size(253, 34);
+			this.RegisterBoxLabel.TabIndex = 5;
+			this.RegisterBoxLabel.Text = "KLIKNIJ TUTAJ ABY ZAŁOŻYĆ KONTO";
+			this.RegisterBoxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// InfoBox
+			// 
+			this.InfoBox.BackColor = System.Drawing.Color.Transparent;
+			this.InfoBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(179)))), ((int)(((byte)(189)))));
+			this.InfoBox.Location = new System.Drawing.Point(23, 282);
+			this.InfoBox.Name = "InfoBox";
+			this.InfoBox.Size = new System.Drawing.Size(253, 33);
+			this.InfoBox.TabIndex = 6;
+			this.InfoBox.Text = "WCZYTYWANIE...";
+			this.InfoBox.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
+			// DownloaderProgressBar
+			// 
+			this.DownloaderProgressBar.BackColor = System.Drawing.Color.Transparent;
+			this.DownloaderProgressBar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+			this.DownloaderProgressBar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(179)))), ((int)(((byte)(189)))));
+			this.DownloaderProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(179)))), ((int)(((byte)(189)))));
+			this.DownloaderProgressBar.GradiantColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+			this.DownloaderProgressBar.GradiantPosition = ProgressBarEx.ProgressBarEx.GradiantArea.None;
+			this.DownloaderProgressBar.Image = null;
+			this.DownloaderProgressBar.Location = new System.Drawing.Point(24, 318);
+			this.DownloaderProgressBar.Name = "DownloaderProgressBar";
+			this.DownloaderProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(179)))), ((int)(((byte)(189)))));
+			this.DownloaderProgressBar.Size = new System.Drawing.Size(253, 12);
+			this.DownloaderProgressBar.Text = "progressBarEx1";
 			// 
 			// PasswordBoxBorder
 			// 
@@ -77,50 +130,25 @@
 			this.PasswordBoxTextBox.TabIndex = 0;
 			this.PasswordBoxTextBox.UseSystemPasswordChar = true;
 			// 
-			// pictureBox1
+			// LoginBoxBorder
 			// 
-			this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-			this.pictureBox1.BackgroundImage = global::WOPL_Launcher.Properties.Resources.logo;
-			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.pictureBox1.Location = new System.Drawing.Point(23, 29);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(253, 112);
-			this.pictureBox1.TabIndex = 2;
-			this.pictureBox1.TabStop = false;
+			this.LoginBoxBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+			this.LoginBoxBorder.Controls.Add(this.LoginBoxTextBox);
+			this.LoginBoxBorder.Location = new System.Drawing.Point(23, 166);
+			this.LoginBoxBorder.Name = "LoginBoxBorder";
+			this.LoginBoxBorder.Size = new System.Drawing.Size(253, 37);
+			this.LoginBoxBorder.TabIndex = 0;
 			// 
-			// RememberMeLabel
+			// LoginBoxTextBox
 			// 
-			this.RememberMeLabel.AutoSize = true;
-			this.RememberMeLabel.BackColor = System.Drawing.Color.Transparent;
-			this.RememberMeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(238)));
-			this.RememberMeLabel.ForeColor = System.Drawing.Color.Transparent;
-			this.RememberMeLabel.Location = new System.Drawing.Point(50, 267);
-			this.RememberMeLabel.Name = "RememberMeLabel";
-			this.RememberMeLabel.Size = new System.Drawing.Size(310, 15);
-			this.RememberMeLabel.TabIndex = 3;
-			this.RememberMeLabel.Text = "REMEMBER MY EMAIL ADDRESS & PASSWORD";
-			// 
-			// RegisterBoxBorder
-			// 
-			this.RegisterBoxBorder.BackColor = System.Drawing.Color.Transparent;
-			this.RegisterBoxBorder.BackgroundImage = global::WOPL_Launcher.Properties.Resources.button_register_border;
-			this.RegisterBoxBorder.Location = new System.Drawing.Point(23, 428);
-			this.RegisterBoxBorder.Name = "RegisterBoxBorder";
-			this.RegisterBoxBorder.Size = new System.Drawing.Size(253, 34);
-			this.RegisterBoxBorder.TabIndex = 4;
-			this.RegisterBoxBorder.TabStop = false;
-			// 
-			// RegisterBoxLabel
-			// 
-			this.RegisterBoxLabel.BackColor = System.Drawing.Color.Transparent;
-			this.RegisterBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.RegisterBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
-			this.RegisterBoxLabel.Location = new System.Drawing.Point(23, 428);
-			this.RegisterBoxLabel.Name = "RegisterBoxLabel";
-			this.RegisterBoxLabel.Size = new System.Drawing.Size(253, 34);
-			this.RegisterBoxLabel.TabIndex = 5;
-			this.RegisterBoxLabel.Text = "click here to create account now";
-			this.RegisterBoxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.LoginBoxTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+			this.LoginBoxTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.LoginBoxTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.LoginBoxTextBox.ForeColor = System.Drawing.Color.White;
+			this.LoginBoxTextBox.Location = new System.Drawing.Point(11, 12);
+			this.LoginBoxTextBox.Name = "LoginBoxTextBox";
+			this.LoginBoxTextBox.Size = new System.Drawing.Size(232, 13);
+			this.LoginBoxTextBox.TabIndex = 0;
 			// 
 			// MainWindow
 			// 
@@ -128,6 +156,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::WOPL_Launcher.Properties.Resources.background;
 			this.ClientSize = new System.Drawing.Size(300, 539);
+			this.Controls.Add(this.InfoBox);
+			this.Controls.Add(this.DownloaderProgressBar);
 			this.Controls.Add(this.RegisterBoxLabel);
 			this.Controls.Add(this.RegisterBoxBorder);
 			this.Controls.Add(this.RememberMeLabel);
@@ -140,12 +170,12 @@
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "WorldOnlinePL";
-			this.LoginBoxBorder.ResumeLayout(false);
-			this.LoginBoxBorder.PerformLayout();
-			this.PasswordBoxBorder.ResumeLayout(false);
-			this.PasswordBoxBorder.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.RegisterBoxBorder)).EndInit();
+			this.PasswordBoxBorder.ResumeLayout(false);
+			this.PasswordBoxBorder.PerformLayout();
+			this.LoginBoxBorder.ResumeLayout(false);
+			this.LoginBoxBorder.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -161,5 +191,7 @@
 		private System.Windows.Forms.Label RememberMeLabel;
 		private System.Windows.Forms.PictureBox RegisterBoxBorder;
 		private System.Windows.Forms.Label RegisterBoxLabel;
+		private ProgressBarEx.ProgressBarEx DownloaderProgressBar;
+		private System.Windows.Forms.Label InfoBox;
 	}
 }

@@ -30,9 +30,28 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,8 +62,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\3rdParty\SimpleJSON.cs" />
+    <Compile Include="Classes\Cryptography\SHA1.cs" />
+    <Compile Include="Classes\Downloader\DownloaderCommands.cs" />
+    <Compile Include="Classes\Downloader\DownloaderException.cs" />
+    <Compile Include="Classes\Downloader\DownloadFailed.cs" />
+    <Compile Include="Classes\Downloader\DownloadFinished.cs" />
+    <Compile Include="Classes\Downloader\DownloadManager.cs" />
+    <Compile Include="Classes\Downloader\HashManager.cs" />
+    <Compile Include="Classes\Downloader\ProgressUpdated.cs" />
+    <Compile Include="Classes\Downloader\ShowMessage.cs" />
+    <Compile Include="Classes\Downloader\UncompressionException.cs" />
+    <Compile Include="Classes\Downloader\VerifyCommand.cs" />
     <Compile Include="Classes\FontManager.cs" />
+    <Compile Include="Classes\GameLauncher.cs" />
+    <Compile Include="Classes\Security.cs" />
+    <Compile Include="Classes\Server.cs" />
+    <Compile Include="Classes\Downloader\Downloader.cs" />
+    <Compile Include="Classes\UnsafeFunctions.cs" />
+    <Compile Include="Classes\WebRequest.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Panel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\MainWindow.cs">
