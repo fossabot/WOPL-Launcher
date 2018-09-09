@@ -20,29 +20,31 @@ namespace WOPL_Launcher.Classes {
 		public static String LoginToken = String.Empty;
 		public static String Description = String.Empty;
 
-		public String GetStats() {
-			String data = "---";
-
+		public static void GetStats(PictureBox image, Label text, Label description) {
 			try {
 				MyWebRequest gsi_data = new MyWebRequest();
 				gsi_data.CancelAsync();
 				gsi_data.DownloadStringAsync(new Uri(GetServerInformationEndpoint));
 				gsi_data.DownloadStringCompleted += (sender, e) => {
 					if (e.Cancelled) {
-						data = "---";
+						text.Text = "Stan Serwera - Offline";
+						image.Image = Properties.Resources.status_offline;
 					} else if (e.Error != null) {
-						data = "---";
+						text.Text = "Stan Serwera - Offline";
+						image.Image = Properties.Resources.status_offline;
 					} else {
+						text.Text = "Stan Serwera - Online";
+						image.Image = Properties.Resources.status_online;
+
 						JSONNode GSI_Node = SimpleJSON.JSON.Parse(e.Result);
 
-						data = GSI_Node["onlineNumber"] + "/" + GSI_Node["numberOfRegistered"];
+						description.Text = ("Graczy na serwerze: " + GSI_Node["onlineNumber"] + "/" + GSI_Node["numberOfRegistered"]).ToUpper();
 					}
 				};
 			} catch {
-				data = "---";
+				text.Text = "Stan Serwera - Offline";
+				image.Image = Properties.Resources.status_offline;
 			}
-
-			return data;
 		}
 
 		public static void Login(String email, String hashPassword) {

@@ -89,6 +89,7 @@
     <Compile Include="Controls\ProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormHandler\WindowMove.cs" />
     <Compile Include="UI\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,16 +134,19 @@
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\splashscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\final.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\button_register_border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splashscreen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\status_offline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\status_online.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\status_unknown.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

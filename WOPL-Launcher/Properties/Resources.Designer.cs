@@ -63,16 +63,6 @@ namespace WOPL_Launcher.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background {
-            get {
-                object obj = ResourceManager.GetObject("background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap button_register_border {
             get {
                 object obj = ResourceManager.GetObject("button_register_border", resourceCulture);
@@ -83,9 +73,9 @@ namespace WOPL_Launcher.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap final {
+        internal static System.Drawing.Bitmap logo {
             get {
-                object obj = ResourceManager.GetObject("final", resourceCulture);
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +83,39 @@ namespace WOPL_Launcher.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo {
+        internal static System.Drawing.Bitmap splashscreen {
             get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                object obj = ResourceManager.GetObject("splashscreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap status_offline {
+            get {
+                object obj = ResourceManager.GetObject("status_offline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap status_online {
+            get {
+                object obj = ResourceManager.GetObject("status_online", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap status_unknown {
+            get {
+                object obj = ResourceManager.GetObject("status_unknown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

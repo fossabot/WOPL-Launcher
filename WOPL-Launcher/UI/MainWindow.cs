@@ -13,10 +13,10 @@ using WOPL_Launcher.Classes.Cryptography;
 using GameLauncher;
 using System.IO;
 using GameLauncher.App.Classes;
+using WOPL_Launcher.FormHandler;
 
 namespace WOPL_Launcher.UI {
 	public partial class MainWindow : Form {
-		Point mouseDownPoint = Point.Empty;
 		Boolean loginEnabled = false;
 		DateTime DownloadStartTime;
 		Downloader downloader;
@@ -39,25 +39,42 @@ namespace WOPL_Launcher.UI {
 			this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
 
 			InfoBox.Font = new Font(FontManager.Instance.GetFontFamily("Airport-Cyr.ttf"), 7f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
-			RememberMeLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9.5f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
-			RegisterBoxLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
+			serverStatusDescription.Font = new Font(FontManager.Instance.GetFontFamily("Airport-Cyr.ttf"), 7f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
+			RememberMeLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
+			LoginButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
+			RegisterButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
+			serverStatusText.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-SemiBold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
 
-			var pos2 = this.PointToScreen(RegisterBoxLabel.Location);
-			pos2 = RegisterBoxBorder.PointToClient(pos2);
-			RegisterBoxLabel.Parent = RegisterBoxBorder;
-			RegisterBoxLabel.Location = pos2;
-			RegisterBoxLabel.BackColor = Color.Transparent;
+			var pos1 = this.PointToScreen(LoginButtonLabel.Location);
+			pos1 = LoginButtonBorder.PointToClient(pos1);
+			LoginButtonLabel.Parent = LoginButtonBorder;
+			LoginButtonLabel.Location = pos1;
+			LoginButtonLabel.BackColor = Color.Transparent;
 
-			this.MouseDown += new MouseEventHandler(mouseDownHandler);
-			this.MouseUp += new MouseEventHandler(mouseUpHandler);
-			this.MouseMove += new MouseEventHandler(mouseMoveHandler);
+			var pos2 = this.PointToScreen(RegisterButtonLabel.Location);
+			pos2 = RegisterButtonBorder.PointToClient(pos2);
+			RegisterButtonLabel.Parent = RegisterButtonBorder;
+			RegisterButtonLabel.Location = pos2;
+			RegisterButtonLabel.BackColor = Color.Transparent;
 
+
+			WindowMove wmHandler = new WindowMove(this);
+			this.MouseDown += new MouseEventHandler(wmHandler.mouseDownHandler);
+			this.MouseUp += new MouseEventHandler(wmHandler.mouseUpHandler);
+			this.MouseMove += new MouseEventHandler(wmHandler.mouseMoveHandler);
+			logo.MouseDown += new MouseEventHandler(wmHandler.mouseDownHandler);
+			logo.MouseUp += new MouseEventHandler(wmHandler.mouseUpHandler);
+			logo.MouseMove += new MouseEventHandler(wmHandler.mouseMoveHandler);
+
+			LoginButtonLabel.Click += new EventHandler(loginButton_Click);
+			RegisterButtonLabel.Click += new EventHandler((x, y) => { MessageBox.Show("Not implemented."); });
 			LoginBoxTextBox.KeyDown += new KeyEventHandler(checkLoginEnter);
 			PasswordBoxTextBox.KeyDown += new KeyEventHandler(checkLoginEnter);
 			LoginBoxTextBox.KeyUp += new KeyEventHandler(enableLogin);
 			PasswordBoxTextBox.KeyUp += new KeyEventHandler(enableLogin);
 
 			this.BeginInvoke((MethodInvoker)delegate {
+				Server.GetStats(serverStatusImage, serverStatusText, serverStatusDescription);
 				launchNFSW();
 			});
 		}
@@ -92,27 +109,6 @@ namespace WOPL_Launcher.UI {
 			} else {
 				loginEnabled = true;
 			}
-		}
-
-		private void mouseDownHandler(object sender, MouseEventArgs e) {
-			if(e.Y <= 100) {
-				mouseDownPoint = new Point(e.X, e.Y);
-			}
-		}
-
-		private void mouseUpHandler(object sender, MouseEventArgs e) {
-			mouseDownPoint = Point.Empty;
-			this.Opacity = 1;
-		}
-
-		private void mouseMoveHandler(object sender, MouseEventArgs e) {
-			if(mouseDownPoint.IsEmpty) {
-				return;
-			}
-
-			Form thisForm = this as Form;
-			thisForm.Location = new Point(thisForm.Location.X + (e.X - mouseDownPoint.X), thisForm.Location.Y + (e.Y - mouseDownPoint.Y)); //hard math, wow
-			this.Opacity = 0.9;
 		}
 
 		private void launchNFSW() {
@@ -203,7 +199,7 @@ namespace WOPL_Launcher.UI {
 		}
 
 		private void OnDownloadFinished() {
-			InfoBox.Text = "Pobieranie ukończone.";
+			InfoBox.Text = "Gra jest gotowa do uruchomienia.";
 			DownloaderProgressBar.Value = 100;
 		}
 
