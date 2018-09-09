@@ -48,6 +48,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -137,9 +140,6 @@
     <None Include="Resources\button_register_border.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\splashscreen1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\status_offline.png" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +147,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\status_unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

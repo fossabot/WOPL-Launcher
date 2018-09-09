@@ -65,13 +65,16 @@ namespace WOPL_Launcher.UI {
 			logo.MouseDown += new MouseEventHandler(wmHandler.mouseDownHandler);
 			logo.MouseUp += new MouseEventHandler(wmHandler.mouseUpHandler);
 			logo.MouseMove += new MouseEventHandler(wmHandler.mouseMoveHandler);
+			closeButton.Click += new EventHandler(wmHandler.Close);
 
 			LoginButtonLabel.Click += new EventHandler(loginButton_Click);
-			RegisterButtonLabel.Click += new EventHandler((x, y) => { MessageBox.Show("Not implemented."); });
 			LoginBoxTextBox.KeyDown += new KeyEventHandler(checkLoginEnter);
 			PasswordBoxTextBox.KeyDown += new KeyEventHandler(checkLoginEnter);
 			LoginBoxTextBox.KeyUp += new KeyEventHandler(enableLogin);
 			PasswordBoxTextBox.KeyUp += new KeyEventHandler(enableLogin);
+
+			RegisterButtonLabel.Click += new EventHandler((x, y) => { MessageBox.Show("Not implemented."); });
+			settingsButton.Click += new EventHandler((x, y) => { MessageBox.Show("Not implemented."); });
 
 			this.BeginInvoke((MethodInvoker)delegate {
 				Server.GetStats(serverStatusImage, serverStatusText, serverStatusDescription);
@@ -80,6 +83,7 @@ namespace WOPL_Launcher.UI {
 		}
 
 		private void loginButton_Click(object sender, EventArgs e) {
+			InfoBox.Text = "Logowanie, prosze czekac";
 			Server.Login(LoginBoxTextBox.Text, SHA1_Hash.GenerateFromString(PasswordBoxTextBox.Text));
 
 			if(String.IsNullOrEmpty(Server.UserId)) {

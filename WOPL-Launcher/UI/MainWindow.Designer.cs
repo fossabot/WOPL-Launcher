@@ -28,18 +28,22 @@
 			this.LoginButtonLabel = new System.Windows.Forms.Label();
 			this.border = new System.Windows.Forms.Panel();
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+			this.serverStatusText = new System.Windows.Forms.Label();
+			this.serverStatusDescription = new System.Windows.Forms.Label();
+			this.RememberMeLabel = new System.Windows.Forms.CheckBox();
+			this.settingsButton = new System.Windows.Forms.PictureBox();
+			this.closeButton = new System.Windows.Forms.PictureBox();
 			this.serverStatusImage = new System.Windows.Forms.PictureBox();
 			this.LoginButtonBorder = new System.Windows.Forms.PictureBox();
 			this.RegisterButtonBorder = new System.Windows.Forms.PictureBox();
 			this.logo = new System.Windows.Forms.PictureBox();
-			this.serverStatusText = new System.Windows.Forms.Label();
-			this.serverStatusDescription = new System.Windows.Forms.Label();
-			this.RememberMeLabel = new System.Windows.Forms.CheckBox();
 			this.DownloaderProgressBar = new ProgressBarEx.ProgressBarEx();
 			this.PasswordBoxBorder = new WOPL_Launcher.Controls.MyPanel();
 			this.PasswordBoxTextBox = new System.Windows.Forms.MaskedTextBox();
 			this.LoginBoxBorder = new WOPL_Launcher.Controls.MyPanel();
 			this.LoginBoxTextBox = new System.Windows.Forms.TextBox();
+			((System.ComponentModel.ISupportInitialize)(this.settingsButton)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.serverStatusImage)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.LoginButtonBorder)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.RegisterButtonBorder)).BeginInit();
@@ -96,14 +100,62 @@
 			// 
 			// webBrowser1
 			// 
-			this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
 			this.webBrowser1.Location = new System.Drawing.Point(12, 12);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";
-			this.webBrowser1.ScriptErrorsSuppressed = true;
 			this.webBrowser1.Size = new System.Drawing.Size(669, 453);
 			this.webBrowser1.TabIndex = 13;
-			this.webBrowser1.Url = new System.Uri("https://files.metonator.cloud/nic.html", System.UriKind.Absolute);
+			this.webBrowser1.Url = new System.Uri("https://nfswonline.pl/aktualnosci2.php", System.UriKind.Absolute);
+			// 
+			// serverStatusText
+			// 
+			this.serverStatusText.AutoSize = true;
+			this.serverStatusText.ForeColor = System.Drawing.Color.White;
+			this.serverStatusText.Location = new System.Drawing.Point(726, 354);
+			this.serverStatusText.Name = "serverStatusText";
+			this.serverStatusText.Size = new System.Drawing.Size(152, 13);
+			this.serverStatusText.TabIndex = 16;
+			this.serverStatusText.Text = "Stan Serwera - Wczytywanie...";
+			// 
+			// serverStatusDescription
+			// 
+			this.serverStatusDescription.AutoSize = true;
+			this.serverStatusDescription.ForeColor = System.Drawing.Color.White;
+			this.serverStatusDescription.Location = new System.Drawing.Point(726, 372);
+			this.serverStatusDescription.Name = "serverStatusDescription";
+			this.serverStatusDescription.Size = new System.Drawing.Size(115, 13);
+			this.serverStatusDescription.TabIndex = 17;
+			this.serverStatusDescription.Text = "Graczy na serwerze: ---";
+			// 
+			// RememberMeLabel
+			// 
+			this.RememberMeLabel.AutoSize = true;
+			this.RememberMeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+			this.RememberMeLabel.ForeColor = System.Drawing.Color.White;
+			this.RememberMeLabel.Location = new System.Drawing.Point(704, 234);
+			this.RememberMeLabel.Name = "RememberMeLabel";
+			this.RememberMeLabel.Size = new System.Drawing.Size(198, 19);
+			this.RememberMeLabel.TabIndex = 19;
+			this.RememberMeLabel.Text = "ZAPAMIETAJ MOJE HASŁO";
+			this.RememberMeLabel.UseVisualStyleBackColor = true;
+			// 
+			// settingsButton
+			// 
+			this.settingsButton.Image = global::WOPL_Launcher.Properties.Resources.settings;
+			this.settingsButton.Location = new System.Drawing.Point(904, 12);
+			this.settingsButton.Name = "settingsButton";
+			this.settingsButton.Size = new System.Drawing.Size(24, 24);
+			this.settingsButton.TabIndex = 23;
+			this.settingsButton.TabStop = false;
+			// 
+			// closeButton
+			// 
+			this.closeButton.Image = global::WOPL_Launcher.Properties.Resources.close;
+			this.closeButton.Location = new System.Drawing.Point(934, 12);
+			this.closeButton.Name = "closeButton";
+			this.closeButton.Size = new System.Drawing.Size(24, 24);
+			this.closeButton.TabIndex = 21;
+			this.closeButton.TabStop = false;
 			// 
 			// serverStatusImage
 			// 
@@ -144,38 +196,6 @@
 			this.logo.Size = new System.Drawing.Size(253, 112);
 			this.logo.TabIndex = 2;
 			this.logo.TabStop = false;
-			// 
-			// serverStatusText
-			// 
-			this.serverStatusText.AutoSize = true;
-			this.serverStatusText.ForeColor = System.Drawing.Color.White;
-			this.serverStatusText.Location = new System.Drawing.Point(726, 354);
-			this.serverStatusText.Name = "serverStatusText";
-			this.serverStatusText.Size = new System.Drawing.Size(134, 13);
-			this.serverStatusText.TabIndex = 16;
-			this.serverStatusText.Text = "Server Status - Checking...";
-			// 
-			// serverStatusDescription
-			// 
-			this.serverStatusDescription.AutoSize = true;
-			this.serverStatusDescription.ForeColor = System.Drawing.Color.White;
-			this.serverStatusDescription.Location = new System.Drawing.Point(726, 372);
-			this.serverStatusDescription.Name = "serverStatusDescription";
-			this.serverStatusDescription.Size = new System.Drawing.Size(115, 13);
-			this.serverStatusDescription.TabIndex = 17;
-			this.serverStatusDescription.Text = "Graczy na serwerze: ---";
-			// 
-			// RememberMeLabel
-			// 
-			this.RememberMeLabel.AutoSize = true;
-			this.RememberMeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-			this.RememberMeLabel.ForeColor = System.Drawing.Color.White;
-			this.RememberMeLabel.Location = new System.Drawing.Point(704, 234);
-			this.RememberMeLabel.Name = "RememberMeLabel";
-			this.RememberMeLabel.Size = new System.Drawing.Size(198, 19);
-			this.RememberMeLabel.TabIndex = 19;
-			this.RememberMeLabel.Text = "ZAPAMIETAJ MOJE HASŁO";
-			this.RememberMeLabel.UseVisualStyleBackColor = true;
 			// 
 			// DownloaderProgressBar
 			// 
@@ -239,6 +259,8 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(20)))));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(976, 481);
+			this.Controls.Add(this.settingsButton);
+			this.Controls.Add(this.closeButton);
 			this.Controls.Add(this.RememberMeLabel);
 			this.Controls.Add(this.serverStatusDescription);
 			this.Controls.Add(this.serverStatusText);
@@ -260,6 +282,8 @@
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "WorldOnlinePL";
+			((System.ComponentModel.ISupportInitialize)(this.settingsButton)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.serverStatusImage)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.LoginButtonBorder)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.RegisterButtonBorder)).EndInit();
@@ -292,5 +316,7 @@
 		private System.Windows.Forms.Label serverStatusText;
 		private System.Windows.Forms.Label serverStatusDescription;
 		private System.Windows.Forms.CheckBox RememberMeLabel;
+		private System.Windows.Forms.PictureBox closeButton;
+		private System.Windows.Forms.PictureBox settingsButton;
 	}
 }

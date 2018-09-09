@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,10 @@ namespace WOPL_Launcher.FormHandler {
 			Form thisForm = mainForm as Form;
 			thisForm.Location = new Point(thisForm.Location.X + (e.X - mouseDownPoint.X), thisForm.Location.Y + (e.Y - mouseDownPoint.Y)); //hard math, wow
 			mainForm.Opacity = 0.9;
+		}
+
+		public void Close(object sender, EventArgs e) {
+			Process.GetProcessById(Process.GetCurrentProcess().Id).Kill();
 		}
 	}
 }
