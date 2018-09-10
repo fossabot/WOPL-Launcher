@@ -20,7 +20,7 @@ namespace WOPL_Launcher.Classes {
 
 			proc.Exited += (sender2, e2) => {
 				NFSW_PID = 0;
-				//closebtn_Click(sender2, e2);
+				Self.KillProcess();
 			};
 		}
 	}

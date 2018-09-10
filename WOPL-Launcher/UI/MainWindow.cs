@@ -17,15 +17,28 @@ using WOPL_Launcher.FormHandler;
 
 namespace WOPL_Launcher.UI {
 	public partial class MainWindow : Form {
+		protected override void OnPaint(PaintEventArgs e) {
+			Self.paintBorders(e, this);
+		}
+
+		protected override CreateParams CreateParams {
+			get {
+				const int CS_DROPSHADOW = 0x20000;
+				CreateParams cp = base.CreateParams;
+				cp.ClassStyle |= CS_DROPSHADOW;
+				return cp;
+			}
+		}
+
 		Boolean loginEnabled = false;
 		DateTime DownloadStartTime;
 		Downloader downloader;
+		String discordrpccode = "487687113983262721";
+		DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence();
 
 		String InstallationDirectory = Directory.GetCurrentDirectory() + "\\GameFiles";
 
 		public MainWindow() {
-			float DPIDefaultScale = 96f;
-
 			downloader = new Downloader(this, 3, 2, 16) {
 				ProgressUpdated = new ProgressUpdated(this.OnDownloadProgress),
 				DownloadFinished = new DownloadFinished(this.DownloadTracksFiles),
@@ -35,15 +48,15 @@ namespace WOPL_Launcher.UI {
 
 			InitializeComponent();
 
-			Font = new Font(Font.Name, 8.25f * DPIDefaultScale / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
+			Font = new Font(Font.Name, 8.25f * Self.DPIDefaultScale / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
 			this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
 
-			InfoBox.Font = new Font(FontManager.Instance.GetFontFamily("Airport-Cyr.ttf"), 7f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
-			serverStatusDescription.Font = new Font(FontManager.Instance.GetFontFamily("Airport-Cyr.ttf"), 7f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
-			RememberMeLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
-			LoginButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
-			RegisterButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
-			serverStatusText.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-SemiBold.otf"), 9f * DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
+			InfoBox.Font = new Font(FontManager.Instance.GetFontFamily("Airport-Cyr.ttf"), 6.75f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
+			serverStatusDescription.Font = new Font(FontManager.Instance.GetFontFamily("Airport-Cyr.ttf"), 6.75f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
+			RememberMeLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
+			LoginButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
+			RegisterButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
+			serverStatusText.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-SemiBold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
 
 			var pos1 = this.PointToScreen(LoginButtonLabel.Location);
 			pos1 = LoginButtonBorder.PointToClient(pos1);
@@ -74,7 +87,17 @@ namespace WOPL_Launcher.UI {
 			PasswordBoxTextBox.KeyUp += new KeyEventHandler(enableLogin);
 
 			RegisterButtonLabel.Click += new EventHandler((x, y) => { MessageBox.Show("Not implemented."); });
-			settingsButton.Click += new EventHandler((x, y) => { MessageBox.Show("Not implemented."); });
+
+			OpenWindow open = new OpenWindow(this, new settingsWindow(), null);
+			settingsButton.Click += new EventHandler(open.SettingsWindow);
+
+			DiscordRpc.EventHandlers handlers = new DiscordRpc.EventHandlers();
+			DiscordRpc.Initialize(discordrpccode, ref handlers, true, "");
+			presence.state = "W Launcherze: " + Application.ProductVersion;
+			presence.largeImageText = "WorldOnlinePL";
+			presence.largeImageKey = "worldonline";
+			presence.instance = true;
+			DiscordRpc.UpdatePresence(presence);
 
 			this.BeginInvoke((MethodInvoker)delegate {
 				Server.GetStats(serverStatusImage, serverStatusText, serverStatusDescription);
@@ -88,12 +111,22 @@ namespace WOPL_Launcher.UI {
 
 			if(String.IsNullOrEmpty(Server.UserId)) {
 				MessageBox.Show(Server.Description);
+				InfoBox.Text = "Gra jest gotowa do uruchomienia.";
 			} else {
 				if(!File.Exists(InstallationDirectory + "\\nfsw.exe")) {
 					MessageBox.Show("Zostałeś zalogowany, lecz pliki gry nie zostały jeszcze pobrane. Spróbuj ponownie po pobraniu plików");
 				} else {
 					InfoBox.Text = "Uruchamianie gry";
 					WOPL_Launcher.Classes.GameLauncher.LaunchGameLegacy(Server.UserId, Server.LoginToken, Server.serverIP);
+
+					DiscordRpc.EventHandlers handlers = new DiscordRpc.EventHandlers();
+					DiscordRpc.Initialize(discordrpccode, ref handlers, true, "");
+					presence.state = "W Grze: [[EVENT_UNKNOWN]]";
+					presence.largeImageText = "WorldOnlinePL";
+					presence.largeImageKey = "worldonline";
+					presence.startTimestamp = Self.getTimestamp(true);
+					presence.instance = true;
+					DiscordRpc.UpdatePresence(presence);
 				}
 			}
 		}
@@ -125,6 +158,7 @@ namespace WOPL_Launcher.UI {
 				if (lpFreeBytesAvailable <= 4000000000) {
 					DownloaderProgressBar.Value = 100;
 					DownloaderProgressBar.ProgressColor = Color.Orange;
+					DownloaderProgressBar.BorderColor = Color.Orange;
 
 					InfoBox.Text = "Brak miejsca na dysku, jest wymagane minimum 4GB";
 				} else {
@@ -161,7 +195,7 @@ namespace WOPL_Launcher.UI {
 		private void OnDownloadProgress(long downloadLength, long downloadCurrent, long compressedLength, string filename, int skiptime = 0) {
 			if (downloadCurrent < compressedLength) {
 				string file = filename.Replace(InstallationDirectory + "/", "").ToUpper();
-				InfoBox.Text = string.Format("Pobieranie {2} ({0}/{1})", this.FormatFileSize(downloadCurrent), this.FormatFileSize(compressedLength), file);
+				InfoBox.Text = string.Format("Pobieranie: {2} ({0}/{1})", this.FormatFileSize(downloadCurrent), this.FormatFileSize(compressedLength), file);
 			}
 
 			try {
@@ -219,10 +253,15 @@ namespace WOPL_Launcher.UI {
 			DownloaderProgressBar.Value = 100;
 			InfoBox.Text = String.Format("Blad pobierania plikow. {0}", failureMessage).ToUpper();
 			DownloaderProgressBar.ProgressColor = Color.Red;
+			DownloaderProgressBar.BorderColor = Color.Red;
 		}
 
 		private void OnShowMessage(string message, string header) {
 			MessageBox.Show(message, header);
+		}
+
+		private void button1_Click(object sender, EventArgs e) {
+			Self.HideWebBrowser(this);
 		}
 	}
 }

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WOPL_Launcher.Classes;
 
 namespace WOPL_Launcher.FormHandler {
 	class WindowMove {
@@ -37,7 +38,7 @@ namespace WOPL_Launcher.FormHandler {
 		}
 
 		public void Close(object sender, EventArgs e) {
-			Process.GetProcessById(Process.GetCurrentProcess().Id).Kill();
+			Self.KillProcess();
 		}
 	}
 }

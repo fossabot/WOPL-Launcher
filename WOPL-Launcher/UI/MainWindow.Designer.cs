@@ -37,6 +37,7 @@
 			this.LoginButtonBorder = new System.Windows.Forms.PictureBox();
 			this.RegisterButtonBorder = new System.Windows.Forms.PictureBox();
 			this.logo = new System.Windows.Forms.PictureBox();
+			this.button1 = new System.Windows.Forms.Button();
 			this.DownloaderProgressBar = new ProgressBarEx.ProgressBarEx();
 			this.PasswordBoxBorder = new WOPL_Launcher.Controls.MyPanel();
 			this.PasswordBoxTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -67,9 +68,10 @@
 			// 
 			// InfoBox
 			// 
+			this.InfoBox.AutoEllipsis = true;
 			this.InfoBox.BackColor = System.Drawing.Color.Transparent;
 			this.InfoBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(179)))), ((int)(((byte)(189)))));
-			this.InfoBox.Location = new System.Drawing.Point(704, 416);
+			this.InfoBox.Location = new System.Drawing.Point(704, 413);
 			this.InfoBox.Name = "InfoBox";
 			this.InfoBox.Size = new System.Drawing.Size(253, 43);
 			this.InfoBox.TabIndex = 6;
@@ -134,9 +136,9 @@
 			this.RememberMeLabel.ForeColor = System.Drawing.Color.White;
 			this.RememberMeLabel.Location = new System.Drawing.Point(704, 234);
 			this.RememberMeLabel.Name = "RememberMeLabel";
-			this.RememberMeLabel.Size = new System.Drawing.Size(198, 19);
+			this.RememberMeLabel.Size = new System.Drawing.Size(274, 19);
 			this.RememberMeLabel.TabIndex = 19;
-			this.RememberMeLabel.Text = "ZAPAMIETAJ MOJE HASŁO";
+			this.RememberMeLabel.Text = "ZAPAMIETAJ MOJE DANE LOGOWANIA";
 			this.RememberMeLabel.UseVisualStyleBackColor = true;
 			// 
 			// settingsButton
@@ -197,6 +199,16 @@
 			this.logo.TabIndex = 2;
 			this.logo.TabStop = false;
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(916, 390);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(10, 10);
+			this.button1.TabIndex = 25;
+			this.button1.Text = "button1";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// DownloaderProgressBar
 			// 
 			this.DownloaderProgressBar.BackColor = System.Drawing.Color.Transparent;
@@ -206,10 +218,10 @@
 			this.DownloaderProgressBar.GradiantColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
 			this.DownloaderProgressBar.GradiantPosition = ProgressBarEx.ProgressBarEx.GradiantArea.None;
 			this.DownloaderProgressBar.Image = null;
-			this.DownloaderProgressBar.Location = new System.Drawing.Point(704, 462);
+			this.DownloaderProgressBar.Location = new System.Drawing.Point(704, 459);
 			this.DownloaderProgressBar.Name = "DownloaderProgressBar";
 			this.DownloaderProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(179)))), ((int)(((byte)(189)))));
-			this.DownloaderProgressBar.Size = new System.Drawing.Size(253, 3);
+			this.DownloaderProgressBar.Size = new System.Drawing.Size(253, 6);
 			this.DownloaderProgressBar.Text = "progressBarEx1";
 			// 
 			// PasswordBoxBorder
@@ -259,6 +271,7 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(20)))));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(976, 481);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.settingsButton);
 			this.Controls.Add(this.closeButton);
 			this.Controls.Add(this.RememberMeLabel);
@@ -299,24 +312,25 @@
 
 		#endregion
 
-		private Controls.MyPanel LoginBoxBorder;
-		private Controls.MyPanel PasswordBoxBorder;
-		private System.Windows.Forms.TextBox LoginBoxTextBox;
-		private System.Windows.Forms.MaskedTextBox PasswordBoxTextBox;
-		private System.Windows.Forms.PictureBox logo;
-		private System.Windows.Forms.PictureBox RegisterButtonBorder;
-		private System.Windows.Forms.Label RegisterButtonLabel;
-		private ProgressBarEx.ProgressBarEx DownloaderProgressBar;
-		private System.Windows.Forms.Label InfoBox;
-		private System.Windows.Forms.Label LoginButtonLabel;
-		private System.Windows.Forms.PictureBox LoginButtonBorder;
-		private System.Windows.Forms.Panel border;
-		private System.Windows.Forms.WebBrowser webBrowser1;
-		private System.Windows.Forms.PictureBox serverStatusImage;
-		private System.Windows.Forms.Label serverStatusText;
-		private System.Windows.Forms.Label serverStatusDescription;
-		private System.Windows.Forms.CheckBox RememberMeLabel;
-		private System.Windows.Forms.PictureBox closeButton;
-		private System.Windows.Forms.PictureBox settingsButton;
+		public Controls.MyPanel LoginBoxBorder;
+		public Controls.MyPanel PasswordBoxBorder;
+		public System.Windows.Forms.TextBox LoginBoxTextBox;
+		public System.Windows.Forms.MaskedTextBox PasswordBoxTextBox;
+		public System.Windows.Forms.PictureBox logo;
+		public System.Windows.Forms.PictureBox RegisterButtonBorder;
+		public System.Windows.Forms.Label RegisterButtonLabel;
+		public ProgressBarEx.ProgressBarEx DownloaderProgressBar;
+		public System.Windows.Forms.Label InfoBox;
+		public System.Windows.Forms.Label LoginButtonLabel;
+		public System.Windows.Forms.PictureBox LoginButtonBorder;
+		public System.Windows.Forms.Panel border;
+		public System.Windows.Forms.WebBrowser webBrowser1;
+		public System.Windows.Forms.PictureBox serverStatusImage;
+		public System.Windows.Forms.Label serverStatusText;
+		public System.Windows.Forms.Label serverStatusDescription;
+		public System.Windows.Forms.CheckBox RememberMeLabel;
+		public System.Windows.Forms.PictureBox closeButton;
+		public System.Windows.Forms.PictureBox settingsButton;
+		public System.Windows.Forms.Button button1;
 	}
 }
