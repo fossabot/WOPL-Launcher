@@ -23,6 +23,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.RegisterButtonLabel = new System.Windows.Forms.Label();
 			this.InfoBox = new System.Windows.Forms.Label();
 			this.LoginButtonLabel = new System.Windows.Forms.Label();
@@ -31,18 +33,25 @@
 			this.serverStatusText = new System.Windows.Forms.Label();
 			this.serverStatusDescription = new System.Windows.Forms.Label();
 			this.RememberMeLabel = new System.Windows.Forms.CheckBox();
+			this.button1 = new System.Windows.Forms.Button();
+			this.playButtonLabel = new System.Windows.Forms.Label();
+			this.playButtonBorder = new System.Windows.Forms.PictureBox();
+			this.panelButton = new System.Windows.Forms.PictureBox();
 			this.settingsButton = new System.Windows.Forms.PictureBox();
 			this.closeButton = new System.Windows.Forms.PictureBox();
 			this.serverStatusImage = new System.Windows.Forms.PictureBox();
 			this.LoginButtonBorder = new System.Windows.Forms.PictureBox();
 			this.RegisterButtonBorder = new System.Windows.Forms.PictureBox();
 			this.logo = new System.Windows.Forms.PictureBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.forgotPassword = new System.Windows.Forms.LinkLabel();
+			this.Notification = new System.Windows.Forms.NotifyIcon(this.components);
 			this.DownloaderProgressBar = new ProgressBarEx.ProgressBarEx();
 			this.PasswordBoxBorder = new WOPL_Launcher.Controls.MyPanel();
 			this.PasswordBoxTextBox = new System.Windows.Forms.MaskedTextBox();
 			this.LoginBoxBorder = new WOPL_Launcher.Controls.MyPanel();
 			this.LoginBoxTextBox = new System.Windows.Forms.TextBox();
+			((System.ComponentModel.ISupportInitialize)(this.playButtonBorder)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.panelButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.settingsButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.serverStatusImage)).BeginInit();
@@ -83,7 +92,7 @@
 			// 
 			this.LoginButtonLabel.BackColor = System.Drawing.Color.Transparent;
 			this.LoginButtonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.LoginButtonLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
+			this.LoginButtonLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(41)))), ((int)(((byte)(0)))));
 			this.LoginButtonLabel.Location = new System.Drawing.Point(704, 264);
 			this.LoginButtonLabel.Name = "LoginButtonLabel";
 			this.LoginButtonLabel.Size = new System.Drawing.Size(253, 34);
@@ -140,11 +149,57 @@
 			this.RememberMeLabel.TabIndex = 19;
 			this.RememberMeLabel.Text = "ZAPAMIETAJ MOJE DANE LOGOWANIA";
 			this.RememberMeLabel.UseVisualStyleBackColor = true;
+			this.RememberMeLabel.Visible = false;
+			// 
+			// button1
+			// 
+			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(20)))));
+			this.button1.Location = new System.Drawing.Point(947, 443);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(10, 10);
+			this.button1.TabIndex = 25;
+			this.button1.Text = "button1";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// playButtonLabel
+			// 
+			this.playButtonLabel.BackColor = System.Drawing.Color.Transparent;
+			this.playButtonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.playButtonLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
+			this.playButtonLabel.Location = new System.Drawing.Point(704, 275);
+			this.playButtonLabel.Name = "playButtonLabel";
+			this.playButtonLabel.Size = new System.Drawing.Size(253, 55);
+			this.playButtonLabel.TabIndex = 30;
+			this.playButtonLabel.Text = "GRAJ";
+			this.playButtonLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.playButtonLabel.UseCompatibleTextRendering = true;
+			this.playButtonLabel.Visible = false;
+			// 
+			// playButtonBorder
+			// 
+			this.playButtonBorder.Image = global::WOPL_Launcher.Properties.Resources.playbutton;
+			this.playButtonBorder.Location = new System.Drawing.Point(704, 275);
+			this.playButtonBorder.Name = "playButtonBorder";
+			this.playButtonBorder.Size = new System.Drawing.Size(253, 55);
+			this.playButtonBorder.TabIndex = 29;
+			this.playButtonBorder.TabStop = false;
+			this.playButtonBorder.Visible = false;
+			// 
+			// panelButton
+			// 
+			this.panelButton.Image = global::WOPL_Launcher.Properties.Resources.panel1;
+			this.panelButton.Location = new System.Drawing.Point(873, 12);
+			this.panelButton.Name = "panelButton";
+			this.panelButton.Size = new System.Drawing.Size(24, 24);
+			this.panelButton.TabIndex = 27;
+			this.panelButton.TabStop = false;
 			// 
 			// settingsButton
 			// 
 			this.settingsButton.Image = global::WOPL_Launcher.Properties.Resources.settings;
-			this.settingsButton.Location = new System.Drawing.Point(904, 12);
+			this.settingsButton.Location = new System.Drawing.Point(903, 12);
 			this.settingsButton.Name = "settingsButton";
 			this.settingsButton.Size = new System.Drawing.Size(24, 24);
 			this.settingsButton.TabIndex = 23;
@@ -153,7 +208,7 @@
 			// closeButton
 			// 
 			this.closeButton.Image = global::WOPL_Launcher.Properties.Resources.close;
-			this.closeButton.Location = new System.Drawing.Point(934, 12);
+			this.closeButton.Location = new System.Drawing.Point(933, 12);
 			this.closeButton.Name = "closeButton";
 			this.closeButton.Size = new System.Drawing.Size(24, 24);
 			this.closeButton.TabIndex = 21;
@@ -171,7 +226,7 @@
 			// LoginButtonBorder
 			// 
 			this.LoginButtonBorder.BackColor = System.Drawing.Color.Transparent;
-			this.LoginButtonBorder.BackgroundImage = global::WOPL_Launcher.Properties.Resources.button_register_border;
+			this.LoginButtonBorder.BackgroundImage = global::WOPL_Launcher.Properties.Resources.login;
 			this.LoginButtonBorder.Location = new System.Drawing.Point(704, 264);
 			this.LoginButtonBorder.Name = "LoginButtonBorder";
 			this.LoginButtonBorder.Size = new System.Drawing.Size(253, 34);
@@ -199,15 +254,23 @@
 			this.logo.TabIndex = 2;
 			this.logo.TabStop = false;
 			// 
-			// button1
+			// forgotPassword
 			// 
-			this.button1.Location = new System.Drawing.Point(916, 390);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(10, 10);
-			this.button1.TabIndex = 25;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.forgotPassword.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
+			this.forgotPassword.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
+			this.forgotPassword.Location = new System.Drawing.Point(704, 229);
+			this.forgotPassword.Name = "forgotPassword";
+			this.forgotPassword.Size = new System.Drawing.Size(253, 24);
+			this.forgotPassword.TabIndex = 32;
+			this.forgotPassword.TabStop = true;
+			this.forgotPassword.Text = "Zapomnialem hasła";
+			this.forgotPassword.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.forgotPassword.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(222)))), ((int)(((byte)(41)))));
+			// 
+			// Notification
+			// 
+			this.Notification.Text = "WorldOnlinePL";
+			this.Notification.Visible = true;
 			// 
 			// DownloaderProgressBar
 			// 
@@ -271,6 +334,10 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(20)))));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(976, 481);
+			this.Controls.Add(this.forgotPassword);
+			this.Controls.Add(this.playButtonLabel);
+			this.Controls.Add(this.playButtonBorder);
+			this.Controls.Add(this.panelButton);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.settingsButton);
 			this.Controls.Add(this.closeButton);
@@ -290,11 +357,14 @@
 			this.Controls.Add(this.PasswordBoxBorder);
 			this.Controls.Add(this.LoginBoxBorder);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "MainWindow";
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "WorldOnlinePL";
+			((System.ComponentModel.ISupportInitialize)(this.playButtonBorder)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.panelButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.settingsButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.serverStatusImage)).EndInit();
@@ -332,5 +402,10 @@
 		public System.Windows.Forms.PictureBox closeButton;
 		public System.Windows.Forms.PictureBox settingsButton;
 		public System.Windows.Forms.Button button1;
+		public System.Windows.Forms.PictureBox panelButton;
+		private System.Windows.Forms.PictureBox playButtonBorder;
+		public System.Windows.Forms.Label playButtonLabel;
+		private System.Windows.Forms.LinkLabel forgotPassword;
+		private System.Windows.Forms.NotifyIcon Notification;
 	}
 }

@@ -13,6 +13,11 @@ using static GameLauncher.App.Classes.User32;
 
 namespace WOPL_Launcher.UI {
 	public partial class settingsWindow : Form {
+		private void settingsWindow_Load(object sender, EventArgs e) {
+
+		}
+
+		/*
 		String UserSettings			= Environment.GetEnvironmentVariable("AppData") + "/Need for Speed World/Settings/UserSettings.xml";
 		XmlDocument UserSettingsXML = new XmlDocument();
 
@@ -32,8 +37,7 @@ namespace WOPL_Launcher.UI {
 		}
 
 		private void settingsWindow_Load(object sender, EventArgs e) {
-			//UserSettings.xml
-			/*try {
+			try {
 				UserSettingsXML.Load(UserSettings);
 				XmlNode screenWidthNode = UserSettingsXML.SelectSingleNode("Settings/VideoConfig/screenwidth");
 				XmlNode screenHeightNode = UserSettingsXML.SelectSingleNode("Settings/VideoConfig/screenheight");
@@ -76,12 +80,11 @@ namespace WOPL_Launcher.UI {
 			RozdzielczoscGry.DataSource = ListaRozdzielczosci;
 
 			//Odswiezanie ekranu
-			*/
 
 			//Czcionki
 			RozdzielczoscGryLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
 			JezykGryLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
-
 		}
+		*/
 	}
 }

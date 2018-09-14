@@ -83,9 +83,39 @@ namespace WOPL_Launcher.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap login {
+            get {
+                object obj = ResourceManager.GetObject("login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap panel1 {
+            get {
+                object obj = ResourceManager.GetObject("panel1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playbutton {
+            get {
+                object obj = ResourceManager.GetObject("playbutton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

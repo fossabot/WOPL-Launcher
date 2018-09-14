@@ -25,12 +25,13 @@ namespace WOPL_Launcher {
 			try {
 				DirectorySecurity ds = Directory.GetAccessControl(Directory.GetCurrentDirectory());
 			} catch (UnauthorizedAccessException) {
-				MessageBox.Show(null, "Launcher nie posiada uprawnien do zapisywania plikow w danym katalogu.\nSprobuj uruchomic launcher jako administrator lub zainstalować go w innym katalogu", "WorldOnlinePL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Self.MBError("Launcher nie posiada uprawnien do zapisywania plikow w danym katalogu.\nSprobuj uruchomic launcher jako administrator lub zainstalować go w innym katalogu");
 				Self.KillProcess();
 			}
 
 			if (!Directory.Exists("GameFiles")) {
 				Directory.CreateDirectory("GameFiles");
+				Self.MBInfo("Hey! Przed kliknieciem 'OK' przeczytaj tą informacje. Utworzyliśmy nowy katalog 'GameFiles', gdzie bedą przechowywane pliki gry. Jeżeli posiadasz pobrane pliki do NFSW, przenieś je do tego katalogu.");
 			}
 
 			Mutex mutex = new Mutex(false, "WOPL_Launcher");
@@ -41,7 +42,7 @@ namespace WOPL_Launcher {
 					Application.SetCompatibleTextRenderingDefault(true);
 					Application.Run(new MainWindow());
 				} else {
-					MessageBox.Show(null, "Launcher został już uruchomiony.", "WorldOnlinePL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					Self.MBError("Launcher został już uruchomiony");
 				}
 			} finally {
 				if (mutex != null) {

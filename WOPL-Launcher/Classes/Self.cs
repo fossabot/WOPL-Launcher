@@ -10,6 +10,7 @@ using WOPL_Launcher.UI;
 namespace WOPL_Launcher.Classes {
 	class Self {
 		public static float DPIDefaultScale = 96f;
+		public static String discordrpccode = "487687113983262721";
 
 		public static void KillProcess(int processId = 2137) {
 			if(processId == 2137) processId = Process.GetCurrentProcess().Id;
@@ -20,6 +21,22 @@ namespace WOPL_Launcher.Classes {
 			Pen p = new Pen(Color.FromArgb(4, 9, 16));
 			e.Graphics.DrawRectangle(p, new Rectangle(new Point(0, 0), new Size(formname.Size.Width - 1, formname.Size.Height - 1)));
 			e.Graphics.DrawRectangle(p, new Rectangle(new Point(2, 2), new Size(formname.Size.Width - 5, formname.Size.Height - 5)));
+		}
+
+		public static void MBError(String text) {
+			MessageBox.Show(null, text, "WorldOnlinePL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
+
+		public static void MBWarning(String text) {
+			MessageBox.Show(null, text, "WorldOnlinePL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+		}
+
+		public static void MBInfo(String text) {
+			MessageBox.Show(null, text, "WorldOnlinePL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		public static void MBSuccess(String text) {
+			MessageBox.Show(null, text, "WorldOnlinePL", MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 
 		public static void HideWebBrowser(Form form) {
@@ -39,6 +56,7 @@ namespace WOPL_Launcher.Classes {
 			Control DownloaderProgressBar		= form.Controls.Find("DownloaderProgressBar", true).Last();
 			Control settingsButton				= form.Controls.Find("settingsButton", true).Last();
 			Control closeButton					= form.Controls.Find("closeButton", true).Last();
+			Control panelButton					= form.Controls.Find("panelButton", true).Last();
 
 			webBrowser1.Hide();
 			logo.Left = 23;
@@ -54,6 +72,7 @@ namespace WOPL_Launcher.Classes {
 			DownloaderProgressBar.Left = 23;
 			settingsButton.Left = 234;
 			closeButton.Left = 264;
+			panelButton.Left = 204;
 		}
 
 		public static string calculateAspectRatio(int width, int height) {

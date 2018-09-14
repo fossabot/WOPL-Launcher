@@ -33,7 +33,7 @@ namespace WOPL_Launcher.UI {
 		Boolean loginEnabled = false;
 		DateTime DownloadStartTime;
 		Downloader downloader;
-		String discordrpccode = "487687113983262721";
+
 		DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence();
 
 		String InstallationDirectory = Directory.GetCurrentDirectory() + "\\GameFiles";
@@ -57,6 +57,7 @@ namespace WOPL_Launcher.UI {
 			LoginButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
 			RegisterButtonLabel.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-Bold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Bold);
 			serverStatusText.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-SemiBold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
+			forgotPassword.Font = new Font(FontManager.Instance.GetFontFamily("Akrobat-SemiBold.otf"), 9f * Self.DPIDefaultScale / CreateGraphics().DpiX, FontStyle.Regular);
 
 			var pos1 = this.PointToScreen(LoginButtonLabel.Location);
 			pos1 = LoginButtonBorder.PointToClient(pos1);
@@ -70,6 +71,11 @@ namespace WOPL_Launcher.UI {
 			RegisterButtonLabel.Location = pos2;
 			RegisterButtonLabel.BackColor = Color.Transparent;
 
+			var pos3 = this.PointToScreen(playButtonLabel.Location);
+			pos3 = playButtonBorder.PointToClient(pos3);
+			playButtonLabel.Parent = playButtonBorder;
+			playButtonLabel.Location = pos3;
+			playButtonLabel.BackColor = Color.Transparent;
 
 			WindowMove wmHandler = new WindowMove(this);
 			this.MouseDown += new MouseEventHandler(wmHandler.mouseDownHandler);
@@ -79,6 +85,8 @@ namespace WOPL_Launcher.UI {
 			logo.MouseUp += new MouseEventHandler(wmHandler.mouseUpHandler);
 			logo.MouseMove += new MouseEventHandler(wmHandler.mouseMoveHandler);
 			closeButton.Click += new EventHandler(wmHandler.Close);
+			panelButton.Click += new EventHandler(wmHandler.Panel);
+			forgotPassword.Click += new EventHandler(wmHandler.ResetPassword);
 
 			LoginButtonLabel.Click += new EventHandler(loginButton_Click);
 			LoginBoxTextBox.KeyDown += new KeyEventHandler(checkLoginEnter);
@@ -86,13 +94,50 @@ namespace WOPL_Launcher.UI {
 			LoginBoxTextBox.KeyUp += new KeyEventHandler(enableLogin);
 			PasswordBoxTextBox.KeyUp += new KeyEventHandler(enableLogin);
 
-			RegisterButtonLabel.Click += new EventHandler((x, y) => { MessageBox.Show("Not implemented."); });
+			settingsButton.Click += new EventHandler((x, y) => {
+				Self.MBInfo("Funkcja nie została jeszcze ukończona. Tymczasowo ustawienia gry z poziomu launchera są niemożliwe.");
+			});
 
-			OpenWindow open = new OpenWindow(this, new settingsWindow(), null);
-			settingsButton.Click += new EventHandler(open.SettingsWindow);
+			RegisterButtonLabel.Click += new EventHandler((x, y) => {
+				Self.MBInfo("Funkcja nie została jeszcze ukończona. Tymczasowo rejestracja z poziomu launchera jest niemożliwa.");
+			});
+
+			playButtonLabel.Click += new EventHandler((x, y) => {
+				//Szybka podmiana plikow
+				if(!File.Exists("GameFiles/lightfx.dll")) { File.WriteAllBytes("GameFiles/lightfx.dll", Extract.AsByte("WOPL_Launcher.SOAPBOXFiles.lightfx.dll")); }
+				Directory.CreateDirectory("GameFiles/modules");
+				if(!File.Exists("GameFiles/modules/udpcrc.soapbox.module")) { File.WriteAllText("GameFiles/modules/udpcrc.soapbox.module", Extract.AsString("WOPL_Launcher.SOAPBOXFiles.udpcrc.soapbox.module")); }
+				if(!File.Exists("GameFiles/modules/udpcrypt1.soapbox.module")) { File.WriteAllText("GameFiles/modules/udpcrypt1.soapbox.module", Extract.AsString("WOPL_Launcher.SOAPBOXFiles.udpcrypt1.soapbox.module")); }
+				if(!File.Exists("GameFiles/modules/udpcrypt1.soapbox.module")) { File.WriteAllText("GameFiles/modules/udpcrypt1.soapbox.module", Extract.AsString("WOPL_Launcher.SOAPBOXFiles.udpcrypt1.soapbox.module")); }
+				if(!File.Exists("GameFiles/modules/xmppsubject.soapbox.module")) { File.WriteAllText("GameFiles/modules/xmppsubject.soapbox.module", Extract.AsString("WOPL_Launcher.SOAPBOXFiles.xmppsubject.soapbox.module")); }
+				try { File.WriteAllBytes("GameFiles/GFX/BootFlow.gfx", Extract.AsByte("WOPL_Launcher.SOAPBOXFiles.lightfx.dll")); } catch { }
+
+				WOPL_Launcher.Classes.GameLauncher.Play();
+
+				int secondsToCloseLauncher = 5;
+				while (secondsToCloseLauncher > 0) {
+					InfoBox.Text = "Wczytywanie gry. Launcher zminimalizuje sie za " + secondsToCloseLauncher + " sekund.";
+					Delay.WaitSeconds(1);
+					secondsToCloseLauncher--;
+				}
+
+				WindowState = FormWindowState.Minimized;
+				ShowInTaskbar = false;
+
+				ContextMenu = new ContextMenu();
+				ContextMenu.MenuItems.Add("Zamknij launcher", wmHandler.Close);
+
+				Notification.ContextMenu = ContextMenu;
+				Notification.Icon = new Icon(Icon, Icon.Width, Icon.Height);
+				Notification.Text = "GameLauncher";
+				Notification.Visible = true;
+			});
+
+			/*OpenWindow open = new OpenWindow(this, new settingsWindow(), null);
+			settingsButton.Click += new EventHandler(open.SettingsWindow);*/
 
 			DiscordRpc.EventHandlers handlers = new DiscordRpc.EventHandlers();
-			DiscordRpc.Initialize(discordrpccode, ref handlers, true, "");
+			DiscordRpc.Initialize(Self.discordrpccode, ref handlers, true, "");
 			presence.state = "W Launcherze: " + Application.ProductVersion;
 			presence.largeImageText = "WorldOnlinePL";
 			presence.largeImageKey = "worldonline";
@@ -110,23 +155,18 @@ namespace WOPL_Launcher.UI {
 			Server.Login(LoginBoxTextBox.Text, SHA1_Hash.GenerateFromString(PasswordBoxTextBox.Text));
 
 			if(String.IsNullOrEmpty(Server.UserId)) {
-				MessageBox.Show(Server.Description);
+				Self.MBError(Server.Description);
 				InfoBox.Text = "Gra jest gotowa do uruchomienia.";
 			} else {
 				if(!File.Exists(InstallationDirectory + "\\nfsw.exe")) {
-					MessageBox.Show("Zostałeś zalogowany, lecz pliki gry nie zostały jeszcze pobrane. Spróbuj ponownie po pobraniu plików");
+					Self.MBWarning("Zostałeś zalogowany, lecz pliki gry nie zostały jeszcze pobrane. Spróbuj ponownie po pobraniu plików");
 				} else {
-					InfoBox.Text = "Uruchamianie gry";
-					WOPL_Launcher.Classes.GameLauncher.LaunchGameLegacy(Server.UserId, Server.LoginToken, Server.serverIP);
+					InfoBox.Text = "Zalogowano jako " + LoginBoxTextBox.Text;
 
-					DiscordRpc.EventHandlers handlers = new DiscordRpc.EventHandlers();
-					DiscordRpc.Initialize(discordrpccode, ref handlers, true, "");
-					presence.state = "W Grze: [[EVENT_UNKNOWN]]";
-					presence.largeImageText = "WorldOnlinePL";
-					presence.largeImageKey = "worldonline";
-					presence.startTimestamp = Self.getTimestamp(true);
-					presence.instance = true;
-					DiscordRpc.UpdatePresence(presence);
+					LoginButtonBorder.Hide();
+					RegisterButtonBorder.Hide();
+					playButtonBorder.Show();
+					playButtonLabel.Show();
 				}
 			}
 		}

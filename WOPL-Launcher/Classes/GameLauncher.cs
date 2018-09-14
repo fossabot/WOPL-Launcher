@@ -23,5 +23,20 @@ namespace WOPL_Launcher.Classes {
 				Self.KillProcess();
 			};
 		}
+
+		public static void Play() {
+			LaunchGameLegacy(Server.UserId, Server.LoginToken, Server.serverIP);
+
+			DiscordRpc.RichPresence presence = new DiscordRpc.RichPresence();
+
+			DiscordRpc.EventHandlers handlers = new DiscordRpc.EventHandlers();
+			DiscordRpc.Initialize(Self.discordrpccode, ref handlers, true, "");
+			presence.state = "W Grze";
+			presence.largeImageText = "WorldOnlinePL";
+			presence.largeImageKey = "worldonline";
+			presence.startTimestamp = Self.getTimestamp(true);
+			presence.instance = true;
+			DiscordRpc.UpdatePresence(presence);
+		}
 	}
 }

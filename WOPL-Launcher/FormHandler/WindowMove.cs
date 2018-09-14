@@ -40,5 +40,17 @@ namespace WOPL_Launcher.FormHandler {
 		public void Close(object sender, EventArgs e) {
 			Self.KillProcess();
 		}
+
+		public void Panel(object sender, EventArgs e) {
+			if(Server.LoginToken == String.Empty) {
+				Process.Start(@"http://panel.nfswonline.pl/login.php");
+			} else {
+				Process.Start(@"http://panel.nfswonline.pl/login.php?token=" + Server.LoginToken);
+			}
+		}
+
+		public void ResetPassword(object sender, EventArgs e) {
+			Process.Start(@"https://panel.nfswonline.pl/zapomnialem_hasla.php");
+		}
 	}
 }
