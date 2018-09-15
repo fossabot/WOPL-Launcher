@@ -110,7 +110,7 @@ namespace WOPL_Launcher.UI {
 				if(!File.Exists("GameFiles/modules/udpcrypt1.soapbox.module")) { File.WriteAllText("GameFiles/modules/udpcrypt1.soapbox.module", Extract.AsString("WOPL_Launcher.SOAPBOXFiles.udpcrypt1.soapbox.module")); }
 				if(!File.Exists("GameFiles/modules/udpcrypt1.soapbox.module")) { File.WriteAllText("GameFiles/modules/udpcrypt1.soapbox.module", Extract.AsString("WOPL_Launcher.SOAPBOXFiles.udpcrypt1.soapbox.module")); }
 				if(!File.Exists("GameFiles/modules/xmppsubject.soapbox.module")) { File.WriteAllText("GameFiles/modules/xmppsubject.soapbox.module", Extract.AsString("WOPL_Launcher.SOAPBOXFiles.xmppsubject.soapbox.module")); }
-				try { File.WriteAllBytes("GameFiles/GFX/BootFlow.gfx", Extract.AsByte("WOPL_Launcher.SOAPBOXFiles.lightfx.dll")); } catch { }
+				try { File.WriteAllBytes("GameFiles/GFX/BootFlow.gfx", Extract.AsByte("WOPL_Launcher.SOAPBOXFiles.BootFlow.gfx")); } catch { }
 
 				WOPL_Launcher.Classes.GameLauncher.Play();
 
